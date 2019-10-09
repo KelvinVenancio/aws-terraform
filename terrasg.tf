@@ -34,7 +34,7 @@ resource "aws_security_group" "terra" {
 		from_port = 8080
 		to_port = 8080
 		protocol = "tcp"
-		cidr_blocks = ["${var.private_subnet_cidr}"]
+		cidr_blocks = ["0.0.0.0/0"]
 	}
 
 	egress {
