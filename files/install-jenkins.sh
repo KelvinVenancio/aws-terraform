@@ -35,5 +35,5 @@ docker run -d -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock jenkins_
 #
 
 sleep 30
-wget http://$(curl icanhazip.com):8080/jnlpJars/jenkins-cli.jar
-java -jar jenkins-cli.jar -s http://$(curl icanhazip.com):8080/ list-jobs
+wget http://$(curl -k icanhazip.com):8080/jnlpJars/jenkins-cli.jar
+java -jar jenkins-cli.jar -s http://$(curl -k icanhazip.com):8080/ list-jobs
