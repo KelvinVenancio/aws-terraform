@@ -23,7 +23,7 @@ resource "aws_instance" "terra" {
 		host = "${aws_instance.terra.public_ip}"
 		user = "ubuntu"
 		port = "22"
-		private_key = "${file("/home/kelvin/terraform/ssh/terraform.pem")}"
+		private_key = "${file("/home/amanara/terraform/ssh/terraform.pem")}"
 		agent = true
 	}
 
@@ -39,7 +39,7 @@ resource "aws_instance" "terra" {
 		"curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -",
 		"sudo add-apt-repository \"deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\"",
 		"sudo apt-get update",
-		"sudo apt-get install docker-ce -y",
+		"sudo apt-get install docker-ce openjdk-8-jre-headless -y",
 		"sudo systemctl start docker",
 		"sudo systemctl enable docker",
 		"sudo chmod +x /tmp/install-jenkins.sh",
