@@ -34,6 +34,10 @@ docker run -d -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock jenkins_
 # download jenkins-cli and test
 #
 
+sleep 120
+docker exec -it $(docker ps | grep "jenkins_image" | awk {'print $1'}) java -jar /var/jenkins_home/war/WEB-INF/jenkins-cli.jar -s http://$(curl -k icanhazip.com):8080/ -auth admin:admin list-jobs
+docker stop $(docker ps | grep "jenkins_image" | awk {'print $1'})
+docker start $(docker ps | grep "jenkins_image" | awk {'print $1'})
 sleep 60
 docker exec -it $(docker ps | grep "jenkins_image" | awk {'print $1'}) java -jar /var/jenkins_home/war/WEB-INF/jenkins-cli.jar -s http://$(curl -k icanhazip.com):8080/ -auth admin:admin list-jobs
 # wget http://$(curl -k icanhazip.com):8080/jnlpJars/jenkins-cli.jar
