@@ -33,12 +33,10 @@ docker run -d -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock jenkins_
 #
 # download jenkins-cli and test
 #
-
-sleep 120
-docker exec -it $(docker ps | grep "jenkins_image" | awk {'print $1'}) java -jar /var/jenkins_home/war/WEB-INF/jenkins-cli.jar -s http://$(curl -k icanhazip.com):8080/ -auth admin:admin list-jobs
+docker exec -it $(docker ps | grep "jenkins_image" | awk {'print $1'}) cd /var/jenkins_home/plugins/ ; rm -rf workflow-*.jpi workflow-*.jpi.pinned workflow-*.jpi* variant* variant* trilead* ssh-* pubsub-* matrix* h* *.pinned *.version_from_image
 docker stop $(docker ps | grep "jenkins_image" | awk {'print $1'})
 docker start $(docker ps -a | grep "jenkins_image" | awk {'print $1'})
 sleep 60
-docker exec -it $(docker ps | grep "jenkins_image" | awk {'print $1'}) java -jar /var/jenkins_home/war/WEB-INF/jenkins-cli.jar -s http://$(curl -k icanhazip.com):8080/ -auth admin:admin list-jobs
+docker exec -it $(docker ps | grep "jenkins_image" | awk {'print $1'}) java -jar /var/jenkins_home/war/WEB-INF/jenkins-cli.jar -s http://$(curl -ks icanhazip.com):8080/ -auth admin:admin list-jobs
 # wget http://$(curl -k icanhazip.com):8080/jnlpJars/jenkins-cli.jar
 # java -jar jenkins-cli.jar -s http://$(curl -k icanhazip.com):8080/ list-jobs
