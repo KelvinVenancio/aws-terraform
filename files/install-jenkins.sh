@@ -43,4 +43,4 @@ docker exec -it $(docker ps | grep "jenkins_image" | awk {'print $1'}) java -jar
 docker exec -it $(docker ps | grep "jenkins_image" | awk {'print $1'}) java -jar /var/jenkins_home/war/WEB-INF/jenkins-cli.jar -s http://$(curl -ks icanhazip.com):8080/ -auth admin:admin console petclinic-pipeline -f
 docker run -d -p 8081:8080 spring-petclinic
 
-echo -n "http://$(curl -ks icanhazip.com):8081/"
+echo -n "http://$(curl -ks icanhazip.com):8081/" | tee -a /tmp/app_addess.log
