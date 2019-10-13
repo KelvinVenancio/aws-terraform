@@ -23,7 +23,7 @@ resource "aws_instance" "terra" {
 		host = "${aws_instance.terra.public_ip}"
 		user = "ubuntu"
 		port = "22"
-		private_key = "${file("/home/kelvin/terraform/ssh/terraform.pem")}"
+		private_key = "${file("/home/amanara/terraform/ssh/terraform.pem")}"
 		agent = true
 	}
 
@@ -55,4 +55,8 @@ resource "aws_instance" "terra" {
 output "public_ip" {
 	value = aws_instance.terra.public_ip
 	description = "The public IP of the web server"
+}
+
+output "app_addess" {
+	value = "${file("${/tmp/app_addess.log}")}"
 }
