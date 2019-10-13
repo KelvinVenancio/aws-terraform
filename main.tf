@@ -58,5 +58,5 @@ output "public_ip" {
 }
 
 output "app_addess" {
-	value = "${file("${/tmp/app_addess.log}")}"
+	value = var.file_path
 }
