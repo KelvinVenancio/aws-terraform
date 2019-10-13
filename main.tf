@@ -58,5 +58,5 @@ output "public_ip" {
 }
 
 output "app_addess" {
-	value = var.file_path
+	value = var.app_port
 }
