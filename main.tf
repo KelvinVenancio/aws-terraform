@@ -53,10 +53,10 @@ resource "aws_instance" "terra" {
 }
 
 output "public_ip" {
-	value = aws_instance.terra.public_ip
+	value = "${aws_instance.terra.public_ip}"
 	description = "The public IP of the web server"
 }
 
 output "app_addess" {
-	value = var.app_port
+	value = "${var.app_port}"
 }
